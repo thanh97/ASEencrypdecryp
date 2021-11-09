@@ -37,19 +37,19 @@ def encrypFunctions():
             if password != passwordConfirm:
                 templte_data = 'Confirmation password is incorrect!'
             else:
-                with open('.\datatmp\plaintext.txt', "w+", encoding="UTF-8") as f:
+                with open('./datatmp/plaintext.txt', "w+", encoding="UTF-8") as f:
                         f.write(data)
                 f.close()
 
-                with open('.\datatmp\plaintext.txt', 'r', encoding="UTF-8") as reader:
+                with open('./datatmp/plaintext.txt', 'r', encoding="UTF-8") as reader:
                     string_data = reader.read().encode("UTF-8")
                     encrypted_data = encrypt(string_data, password)
                     hex_data = codecs.encode(encrypted_data,'hex_codec')
-                    with open('.\datatmp\encrypt.txt', "wb+") as f:
+                    with open('./datatmp/encrypt.txt', "wb+") as f:
                         f.write(hex_data)
                     f.close()
                 reader.close()
-                with open('.\datatmp\encrypt.txt', 'r') as reader:
+                with open('./datatmp/encrypt.txt', 'r') as reader:
                     templte_data = reader.read()
                 reader.close()
         except:
@@ -64,19 +64,19 @@ def decrypFunctions():
             password2  = request.form['password2']
             hex_data = codecs.decode(data_request, 'hex_codec')
             decrypted_data = decrypt(hex_data, password2)
-            with open('./datatmp/encrypt_out.txt', "wb+") as f:
+            with open('./data/encrypt_out.txt', "wb+") as f:
                     f.write(decrypted_data)
             f.close()
 
-            with open('.\datatmp\encrypt_out.txt','r') as reader:
+            with open('.\data\encrypt_out.txt','r') as reader:
                 decrypted_data_out = reader.read()
             reader.close()
         except:
             print('An error occurred during decryption execution, please try again')
-    os.remove('.\datatmp\plaintext.txt')
-    os.remove('.\datatmp\encrypt.txt')                
-    os.remove('.\datatmp\encrypt_out.txt')
+    os.remove('./data/plaintext.txt')
+    os.remove('./data/encrypt.txt')                
+    os.remove('./data/encrypt_out.txt')
     return render_template('home.html', data2=decrypted_data_out)
 
 if __name__ == "__main__":
-  app.run()
+  app.run(threaded=True, port=5000)
