@@ -9,7 +9,7 @@ flake8==3.7.7
 flake8-polyfill==1.0.2
 flake8-tidy-imports==2.0.0
 Flask==2.0.2
-flask-encryptor==0.2.3
+flask-encryptor==0.2.5
 gunicorn==20.1.0
 idna==3.3
 importlib-metadata==4.8.1
