@@ -37,19 +37,19 @@ def encrypFunctions():
             if password != passwordConfirm:
                 templte_data = 'Confirmation password is incorrect!'
             else:
-                with open('.\data\plaintext.txt', "w+", encoding="UTF-8") as f:
+                with open('.\static\plaintext.txt', "w+", encoding="UTF-8") as f:
                         f.write(data)
                 f.close()
 
-                with open('.\data\plaintext.txt', 'r', encoding="UTF-8") as reader:
+                with open('.\static\plaintext.txt', 'r', encoding="UTF-8") as reader:
                     string_data = reader.read().encode("UTF-8")
                     encrypted_data = encrypt(string_data, password)
                     hex_data = codecs.encode(encrypted_data,'hex_codec')
-                    with open('.\data\encrypt.txt', "wb+") as f:
+                    with open('.\static\encrypt.txt', "wb+") as f:
                         f.write(hex_data)
                     f.close()
                 reader.close()
-                with open('.\data\encrypt.txt', 'r') as reader:
+                with open('.\static\encrypt.txt', 'r') as reader:
                     templte_data = reader.read()
                 reader.close()
         except:
@@ -64,18 +64,18 @@ def decrypFunctions():
             password2  = request.form['password2']
             hex_data = codecs.decode(data_request, 'hex_codec')
             decrypted_data = decrypt(hex_data, password2)
-            with open('.\data\encrypt_out.txt', "wb+") as f:
+            with open('.\static\encrypt_out.txt', "wb+") as f:
                     f.write(decrypted_data)
             f.close()
 
-            with open('.\data\encrypt_out.txt','r') as reader:
+            with open('.\static\encrypt_out.txt','r') as reader:
                 decrypted_data_out = reader.read()
             reader.close()
         except:
             print('An error occurred during decryption execution, please try again')
-    os.remove('.\data\plaintext.txt')
-    os.remove('.\data\encrypt.txt')                
-    os.remove('.\data\encrypt_out.txt')
+    os.remove('.\static\plaintext.txt')
+    os.remove('.\static\encrypt.txt')                
+    os.remove('.\static\encrypt_out.txt')
     return render_template('home.html', data2=decrypted_data_out)
 
 if __name__ == "__main__":
