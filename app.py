@@ -27,7 +27,7 @@ def decrypt(data, password):
 def home():
     return render_template('home.html')
 
-@app.route('/encryp', methods=['POST', 'GET'])
+@app.route('/encryp', methods=['POST'])
 def encrypFunctions():
     if request.method == 'POST':
         try:
