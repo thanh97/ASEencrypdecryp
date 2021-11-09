@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>encryption and decryption</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* Style the header */
+        
+        header {
+            background-color: #666;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+        /* Create two columns/boxes that floats next to each other */
+        
+        nav {
+            float: left;
+            width: 30%;
+            height: 300px;
+            /* only for demonstration, should be removed */
+            background: #ccc;
+            padding: 20px;
+        }
+        /* Style the list inside the menu */
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        article {
+            float: left;
+            padding: 20px;
+            width: 70%;
+            background-color: #f1f1f1;
+            height: 300px;
+            /* only for demonstration, should be removed */
+        }
+        /* Clear floats after the columns */
+        
+        section::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Style the footer */
+        
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+        /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+        
+        @media (max-width: 600px) {
+            nav,
+            article {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<header>
+    <h2>AES encryption and decryption python</h2>
+</header>
+
+<section>
+    <nav>
+    </nav>
+
+    <article>
+        <form action="/encryp" method="post" enctype="multipart/form-data">
+            <label for="plaintext">plaintext:</label>
+            <textarea type="text" id="plaintext" name="plaintext"></textarea><br><br>
+            <label for="fname">password:</label>
+            <input type="password" id="password" name="password" value=""><br>
+            <label for="lname">confirm:</label>
+            <input type="password" id="confirm" name="confirm" value=""><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </article>
+
+    <nav>
+        <div>
+            <label>result: <br> </label> <br>
+            <textarea type="text" id="plaintext0" name="plaintext0">{{encode_data}}</textarea><br><br>
+        </div>
+    </nav>
+
+    <article>
+        <form action="/decryp" method="post" enctype="multipart/form-data">
+            <label for="plaintext2">plaintext:</label>
+            <textarea type="text" id="plaintext2" name="plaintext2"></textarea><br><br>
+            <label for="password2">password:</label>
+            <input type="password" id="password2" name="password2" value=""><br>
+            <input type="submit" value="Submit">
+        </form>
+    </article>
+    <nav>
+        <div>
+            <label>result: </label>
+            <textarea type="text" id="plaintext1" name="plaintext1">{{data2}}</textarea><br><br>
+        </div>
+    </nav>
+</section>
+
+<footer>
+
+</footer>
+
+</html>
