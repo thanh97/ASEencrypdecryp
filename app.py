@@ -33,24 +33,28 @@ def encryptFunctions():
             data = request.form['plaintext']
             password  = request.form['password']
             passwordConfirm = request.form['confirm']
-            if password != passwordConfirm:
-                templte_data = 'Confirmation password is incorrect!'
-            else:
-                with open('./static/plaintext.txt', "w+", encoding="UTF-8") as f:
-                        f.write(data)
-                f.close()
-                with open('./static/plaintext.txt', 'r', encoding="UTF-8") as reader:
-                    string_data = reader.read().encode("UTF-8")
-                    encrypted_data = encrypt(string_data, password)
-                    hex_data = codecs.encode(encrypted_data,'hex_codec')
-                    with open('./static/encrypt.txt', "wb+") as f:
-                        f.write(hex_data)
+            if data == '':
+                templte_data = 'no input data'
+                return render_template('home.html', encode_data=templte_data)
+            else:    
+                if password != passwordConfirm:
+                    templte_data = 'Confirmation password is incorrect!'
+                else:
+                    with open('./static/plaintext.txt', "w+", encoding="UTF-8") as f:
+                            f.write(data)
                     f.close()
-                reader.close()
-                with open('./static/encrypt.txt', 'r') as reader:
-                    templte_data = reader.read()
-                    print (templte_data)
-                reader.close()
+                    with open('./static/plaintext.txt', 'r', encoding="UTF-8") as reader:
+                        string_data = reader.read().encode("UTF-8")
+                        encrypted_data = encrypt(string_data, password)
+                        hex_data = codecs.encode(encrypted_data,'hex_codec')
+                        with open('./static/encrypt.txt', "wb+") as f:
+                            f.write(hex_data)
+                        f.close()
+                    reader.close()
+                    with open('./static/encrypt.txt', 'r') as reader:
+                        templte_data = reader.read()
+                        print (templte_data)
+                    reader.close()
     return render_template('home.html', encode_data=templte_data)
 
 @app.route('/decrypt', methods=['POST', 'GET'])
