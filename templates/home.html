@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>encryption and decryption version 1.0</title>
+    <title>encryption and decryption</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -27,7 +29,7 @@
         nav {
             float: left;
             width: 30%;
-            height: 300px;
+            height: 400px;
             /* only for demonstration, should be removed */
             background: #ccc;
             padding: 20px;
@@ -44,7 +46,7 @@
             padding: 20px;
             width: 70%;
             background-color: #f1f1f1;
-            height: 300px;
+            height: 400px;
             /* only for demonstration, should be removed */
         }
         /* Clear floats after the columns */
@@ -75,51 +77,62 @@
 </head>
 
 <header>
-    <h2>AES encryption and decryption python</h2>
+    <h2>AES encryption and decryption python version 1.0</h2>
 </header>
 
 <section>
     <nav>
-    </nav>
-
-    <article>
-        <form action="/encrypt" method="POST" enctype="multipart/form-data">
-            <label for="plaintext">plaintext:</label>
-            <textarea type="text" id="plaintext" name="plaintext"></textarea><br><br>
-            <label for="fname">password:</label>
-            <input type="password" id="password" name="password" value=""><br>
-            <label for="lname">confirm:</label>
-            <input type="password" id="confirm" name="confirm" value=""><br><br>
-            <input type="submit" value="Submit">
-        </form>
-    </article>
-
-    <nav>
-        <div>
-            <label>encrypted text: <br> </label> <br>
-            <textarea type="text" id="plaintext0" name="plaintext0">{{encode_data}}</textarea><br><br>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">encrypted text:</label>
+            <textarea class="form-control" id="plaintext0" rows="3" name="plaintext0">{{encode_data}}</textarea>
         </div>
     </nav>
 
     <article>
-        <form action="/decrypt" method="POST" enctype="multipart/form-data">
-            <label for="plaintext2">plaintext:</label>
-            <textarea type="text" id="plaintext2" name="plaintext2"></textarea><br><br>
-            <label for="password2">password:</label>
-            <input type="password" id="password2" name="password2" value=""><br>
-            <input type="submit" value="Submit">
-        </form>
+        <div style="width: 60%;">
+
+            <form action="/encrypt" method="POST" enctype="multipart/form-data">
+                <h5 class="text-center">Text encoding</h5>
+                <div class="mb-2">
+                    <label for="exampleFormControlTextarea1">plaintext:</label>
+                    <textarea class="form-control" type="text" id="plaintext" name="plaintext" rows="2"></textarea>
+                </div>
+                <div class="mb-1">
+                    <label for="exampleFormControlInput1" class="form-label">password:</label>
+                    <input type="password" class="form-control" id="password" name="password" value="">
+                </div>
+                <div class="mb-1">
+                    <label for="exampleFormControlInput1" class="form-label">confirm:</label>
+                    <input type="password" class="form-control" id="confirm" name="confirm" value="">
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </article>
+
     <nav>
-        <div>
-            <label>text after decoding: </label>
-            <textarea type="text" id="plaintext1" name="plaintext1">{{decrypt_data2}}</textarea><br><br>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1">decrypt text:</label>
+            <textarea class="form-control" type="text" id="plaintext1" rows="3" name="plaintext1">{{decrypt_data2}}</textarea>
         </div>
     </nav>
+
+    <article>
+        <div style="width: 60%;">
+            <form action="/decrypt" method="POST" enctype="multipart/form-data">
+                <h5 class="text-center">decoding text</h5>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">ciphertext:</label>
+                    <textarea class="form-control" type="text" id="plaintext2" name="plaintext2" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">password:</label>
+                    <input type="password" class="form-control" id="password2" name="password2" value="">
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </article>
 </section>
-
-<footer>
-
-</footer>
 
 </html>
