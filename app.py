@@ -41,16 +41,16 @@ def encryptFunctions():
                 f.close()
                 with open('./static/plaintext.txt', 'r', encoding="UTF-8") as reader:
                     string_data = reader.read().encode("UTF-8")
-                    print (string_data)
-            #         encrypted_data = encrypt(string_data, password)
-            #         hex_data = codecs.encode(encrypted_data,'hex_codec')
-            #         with open('./static/encrypt.txt', "wb+") as f:
-            #             f.write(hex_data)
-            #         f.close()
-            #     reader.close()
-            #     with open('./static/encrypt.txt', 'r') as reader:
-            #         templte_data = reader.read()
-            #     reader.close()
+                    encrypted_data = encrypt(string_data, password)
+                    hex_data = codecs.encode(encrypted_data,'hex_codec')
+                    with open('./static/encrypt.txt', "wb+") as f:
+                        f.write(hex_data)
+                    f.close()
+                reader.close()
+                with open('./static/encrypt.txt', 'r') as reader:
+                    templte_data = reader.read()
+                    print (templte_data)
+                reader.close()
         # except:
         #     print("An exception occurred")
     return render_template('home.html', encode_data=templte_data)
