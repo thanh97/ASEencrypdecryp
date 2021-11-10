@@ -81,8 +81,3 @@
 #     except:
 #             print(erro)
 # reader.close()
-
-text = "b'nguyen van A'"
-textdata = text.split("b''","''")
-
-print(textdata)
