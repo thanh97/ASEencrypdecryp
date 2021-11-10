@@ -20,7 +20,7 @@ MarkupSafe==2.0.1
 mccabe==0.6.1
 mypy==0.641
 mypy-extensions==0.4.1
-numpy==1.21.0
+numpy==1.14.1
 pandas==1.2.5
 pep8-naming==0.8.2
 pycodestyle==2.5.0
