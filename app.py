@@ -69,10 +69,9 @@ def decryptFunctions():
                 decrypted_data_out = reader.read()
             reader.close()
         except:
-            print('An error occurred during decryption execution, please try again')
-    os.remove('./static/plaintext.txt')
-    os.remove('./static/encrypt.txt')                
-    os.remove('./static/encrypt_out.txt')
+            decrypted_data_out = 'Wrong password please re-enter!'
+            return render_template('home.html', decrypt_data2=decrypted_data_out)                
+    
     return render_template('home.html', decrypt_data2=decrypted_data_out)
 
 if __name__ == "__main__":
