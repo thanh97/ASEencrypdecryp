@@ -69,13 +69,13 @@ def decryptFunctions():
                     f.write(decrypted_data)
             f.close()
 
-            with open('./static/encrypt_out.txt','r') as reader:
+            with open('./static/encrypt_out.txt','r', encoding="UTF-8") as reader:
                 decrypted_data_out = reader.read()
             reader.close()
         except:
             decrypted_data_out = 'Wrong password please re-enter!'
-            return render_template('home.html', decrypt_data2=decrypted_data_out)                
-    
+            return render_template('home.html', decrypt_data2=decrypted_data_out)
+            
     return render_template('home.html', decrypt_data2=decrypted_data_out)
 
 if __name__ == "__main__":
