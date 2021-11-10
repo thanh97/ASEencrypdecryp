@@ -23,12 +23,11 @@ def decrypt(data, password):
     return create_aes(password, iv).decrypt(cipher)
     
 @app.route('/')
-@app.route('/home', methods=['get'])
 def home():
     return render_template('home.html')
 
-@app.route('/encryp', methods=['POST'])
-def encrypFunctions():
+@app.route('/encrypt', methods=['POST'])
+def encryptFunctions():
     if request.method == 'POST':
         try:
             data = request.form['plaintext']
@@ -54,10 +53,10 @@ def encrypFunctions():
                 reader.close()
         except:
             print("An exception occurred")
-    return render_template('home.html', encode_data=templte_data)
+    return render_template('home.html',encode_data=templte_data)
 
-@app.route('/decryp', methods=['POST', 'GET'])
-def decrypFunctions():
+@app.route('/decrypt', methods=['POST', 'GET'])
+def decryptFunctions():
     if request.method == 'POST':
         try:
             data_request = request.form['plaintext2']
