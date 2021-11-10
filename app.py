@@ -22,7 +22,7 @@ def decrypt(data, password):
     iv, cipher = data[:AES.block_size], data[AES.block_size:]
     return create_aes(password, iv).decrypt(cipher)
     
-@app.route('/')
+@app.route('/',methods=['POST','GET'])
 def home():
     return render_template('home.html')
 
@@ -71,9 +71,9 @@ def decryptFunctions():
             reader.close()
         except:
             print('An error occurred during decryption execution, please try again')
-    # os.remove('./static/plaintext.txt')
-    # os.remove('./static/encrypt.txt')                
-    # os.remove('./static/encrypt_out.txt')
+    os.remove('./static/plaintext.txt')
+    os.remove('./static/encrypt.txt')                
+    os.remove('./static/encrypt_out.txt')
     return render_template('home.html', data2=decrypted_data_out)
 
 if __name__ == "__main__":
