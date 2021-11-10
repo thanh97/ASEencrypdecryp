@@ -29,7 +29,7 @@ def home():
 @app.route('/encrypt', methods=['POST'])
 def encryptFunctions():
     if request.method == 'POST':
-        try:
+        # try:
             data = request.form['plaintext']
             password  = request.form['password']
             passwordConfirm = request.form['confirm']
@@ -39,7 +39,6 @@ def encryptFunctions():
                 with open('./static/plaintext.txt', "w+", encoding="UTF-8") as f:
                         f.write(data)
                 f.close()
-
                 with open('./static/plaintext.txt', 'r', encoding="UTF-8") as reader:
                     string_data = reader.read().encode("UTF-8")
                     encrypted_data = encrypt(string_data, password)
@@ -51,9 +50,9 @@ def encryptFunctions():
                 with open('./static/encrypt.txt', 'r') as reader:
                     templte_data = reader.read()
                 reader.close()
-        except:
-            print("An exception occurred")
-    return render_template('home.html',encode_data=templte_data)
+        # except:
+        #     print("An exception occurred")
+    return render_template('home.html', encode_data=templte_data)
 
 @app.route('/decrypt', methods=['POST', 'GET'])
 def decryptFunctions():
