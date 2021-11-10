@@ -33,15 +33,15 @@ def encryptFunctions():
             data = request.form['plaintext']
             password  = request.form['password']
             passwordConfirm = request.form['confirm']
-            print (data)
-            # if password != passwordConfirm:
-            #     templte_data = 'Confirmation password is incorrect!'
-            # else:
-            #     with open('./static/plaintext.txt', "w+", encoding="UTF-8") as f:
-            #             f.write(data)
-            #     f.close()
-            #     with open('./static/plaintext.txt', 'r', encoding="UTF-8") as reader:
-            #         string_data = reader.read().encode("UTF-8")
+            if password != passwordConfirm:
+                templte_data = 'Confirmation password is incorrect!'
+            else:
+                with open('./static/plaintext.txt', "w+", encoding="UTF-8") as f:
+                        f.write(data)
+                f.close()
+                with open('./static/plaintext.txt', 'r', encoding="UTF-8") as reader:
+                    string_data = reader.read().encode("UTF-8")
+                    print (string_data)
             #         encrypted_data = encrypt(string_data, password)
             #         hex_data = codecs.encode(encrypted_data,'hex_codec')
             #         with open('./static/encrypt.txt', "wb+") as f:
